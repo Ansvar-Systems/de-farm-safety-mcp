@@ -1,5 +1,6 @@
 {
   "name": "@ansvar/de-farm-safety-mcp",
+  "mcpName": "io.github.ansvar-systems/de-farm-safety",
   "version": "0.1.0",
   "description": "German farm occupational safety via MCP — SVLFG/DGUV guidance, machinery safety, livestock handling, GefStoffV, ArbSchG",
   "type": "module",
