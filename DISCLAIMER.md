@@ -1,26 +1,27 @@
 # Disclaimer
 
-This MCP server provides farm health and safety data for informational purposes only.
+Dieser MCP-Server stellt Daten zum Arbeitsschutz in der Landwirtschaft ausschliesslich zu Informationszwecken bereit.
 
-## Not Professional Advice
+## Keine Rechtsberatung
 
-The data served by this tool does not constitute professional health and safety, legal, or medical advice. Safety guidance, reporting requirements, and risk assessment templates are based on published HSE (Health and Safety Executive) guidance, but individual farm conditions vary. Always consult current HSE publications, your own risk assessments, and qualified health and safety professionals before making decisions. In an emergency, call 999.
+Die von diesem Tool bereitgestellten Daten stellen keine professionelle Arbeitsschutz-, Rechts- oder medizinische Beratung dar. Orientierungshilfen, Meldepflichten und Vorlagen fuer Gefaehrdungsbeurteilungen basieren auf veroeffentlichten Vorschriften und Handlungshilfen der SVLFG, DGUV, BAuA und geltenden Gesetzen. Betriebsspezifische Bedingungen koennen abweichen. Konsultieren Sie stets die aktuellen Vorschriften, Ihre eigene Gefaehrdungsbeurteilung und qualifizierte Fachkraefte fuer Arbeitssicherheit. Im Notfall: 112.
 
-## Data Sources
+## Datenquellen
 
-All data is sourced from:
+Alle Daten basieren auf:
 
-- **HSE Agriculture Guidance** -- Crown Copyright, Health and Safety Executive
-- **RIDDOR Reporting Requirements** -- Crown Copyright, Health and Safety Executive
-- **COSHH in Agriculture** -- Crown Copyright, Health and Safety Executive
-- **PUWER (Provision and Use of Work Equipment Regulations)** -- Crown Copyright, Health and Safety Executive
+- **SVLFG (Sozialversicherung fuer Landwirtschaft, Forsten und Gartenbau)** -- Praevention, Unfallstatistik, VSG 1.1-4.1
+- **DGUV (Deutsche Gesetzliche Unfallversicherung)** -- Vorschriften, Regeln, Informationen
+- **BAuA (Bundesanstalt fuer Arbeitsschutz und Arbeitsmedizin)** -- Technische Regeln (TRBS, TRGS, TRBA)
+- **ArbSchG, BetrSichV, GefStoffV, PflSchG, JArbSchG, MuSchG, SGB VII** -- Gesetzestexte
+- **Maschinenrichtlinie 2006/42/EG, PSA-Verordnung (EU) 2016/425, CLP-Verordnung (EG) 1272/2008** -- EU-Recht
 
-All data is used under the [Open Government Licence v3](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+Deutsche Gesetze und Verordnungen sind oeffentlich zugaenglich (gesetze-im-internet.de). SVLFG- und DGUV-Veroeffentlichungen sind unter den jeweiligen Nutzungsbedingungen der Herausgeber verfuegbar.
 
-## Currency
+## Aktualitaet
 
-Health and safety regulations change. HSE guidance is updated periodically. This tool shows the data available at the time of its last ingestion run. Check `check_data_freshness` for the age of the data.
+Arbeitsschutzvorschriften aendern sich. SVLFG-, DGUV- und BAuA-Veroeffentlichungen werden regelmaessig aktualisiert. Dieses Tool zeigt den Datenstand zum Zeitpunkt der letzten Datenuebernahme. Nutzen Sie `check_data_freshness` fuer das Alter der Daten.
 
-## No Warranty
+## Keine Gewaehrleistung
 
-This software is provided "as is" without warranty of any kind. See the Apache-2.0 license for details.
+Diese Software wird ohne jegliche Gewaehrleistung bereitgestellt ("as is"). Siehe die Apache-2.0-Lizenz fuer Details.

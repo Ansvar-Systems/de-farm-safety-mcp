@@ -24,8 +24,8 @@ describe('get_machinery_safety tool', () => {
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
 
-  test('returns results for atv', () => {
-    const result = handleGetMachinerySafety(db, { machine_type: 'atv' });
+  test('returns results for teleskoplader', () => {
+    const result = handleGetMachinerySafety(db, { machine_type: 'teleskoplader' });
     expect(result).toHaveProperty('results_count');
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
@@ -36,7 +36,7 @@ describe('get_machinery_safety tool', () => {
   });
 
   test('rejects unsupported jurisdiction', () => {
-    const result = handleGetMachinerySafety(db, { machine_type: 'tractor', jurisdiction: 'DE' });
+    const result = handleGetMachinerySafety(db, { machine_type: 'tractor', jurisdiction: 'FR' });
     expect(result).toHaveProperty('error', 'jurisdiction_not_supported');
   });
 

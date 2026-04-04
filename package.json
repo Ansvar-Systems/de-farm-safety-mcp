@@ -1,7 +1,7 @@
 {
   "name": "@ansvar/de-farm-safety-mcp",
   "version": "0.1.0",
-  "description": "UK farm health and safety via MCP — HSE guidance, machinery safety, livestock handling, COSHH, RIDDOR",
+  "description": "German farm occupational safety via MCP — SVLFG/DGUV guidance, machinery safety, livestock handling, GefStoffV, ArbSchG",
   "type": "module",
   "main": "dist/server.js",
   "bin": {
@@ -20,7 +20,7 @@
     "build:db": "tsx scripts/build-db.ts",
     "freshness:check": "tsx scripts/check-freshness.ts"
   },
-  "keywords": ["mcp", "safety", "hse", "coshh", "riddor", "machinery", "farming"],
+  "keywords": ["mcp", "safety", "svlfg", "dguv", "arbschg", "gefstoffv", "machinery", "farming", "germany"],
   "author": "Ansvar Systems <info@ansvar.eu>",
   "license": "Apache-2.0",
   "repository": {

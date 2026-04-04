@@ -18,20 +18,20 @@ describe('search_safety_guidance tool', () => {
     if (existsSync(TEST_DB)) unlinkSync(TEST_DB);
   });
 
-  test('returns results for tractor query', () => {
-    const result = handleSearchSafetyGuidance(db, { query: 'tractor' });
+  test('returns results for Traktor query', () => {
+    const result = handleSearchSafetyGuidance(db, { query: 'Traktor' });
     expect(result).toHaveProperty('results_count');
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
 
-  test('returns results for cattle query', () => {
-    const result = handleSearchSafetyGuidance(db, { query: 'cattle' });
+  test('returns results for Rinder query', () => {
+    const result = handleSearchSafetyGuidance(db, { query: 'Rinder' });
     expect(result).toHaveProperty('results_count');
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
 
   test('filters by topic', () => {
-    const result = handleSearchSafetyGuidance(db, { query: 'ROPS seatbelt', topic: 'machinery' });
+    const result = handleSearchSafetyGuidance(db, { query: 'ROPS Sicherheitsgurt', topic: 'machinery' });
     if ('results' in result) {
       for (const r of (result as { results: { topic: string }[] }).results) {
         expect(r.topic).toBe('machinery');
@@ -40,15 +40,15 @@ describe('search_safety_guidance tool', () => {
   });
 
   test('rejects unsupported jurisdiction', () => {
-    const result = handleSearchSafetyGuidance(db, { query: 'tractor', jurisdiction: 'FR' });
+    const result = handleSearchSafetyGuidance(db, { query: 'Traktor', jurisdiction: 'FR' });
     expect(result).toHaveProperty('error', 'jurisdiction_not_supported');
   });
 
   test('includes _meta with disclaimer', () => {
-    const result = handleSearchSafetyGuidance(db, { query: 'COSHH' });
+    const result = handleSearchSafetyGuidance(db, { query: 'GefStoffV' });
     expect(result).toHaveProperty('_meta');
     if ('_meta' in result) {
-      expect((result as { _meta: { disclaimer: string } })._meta.disclaimer).toContain('HSE');
+      expect((result as { _meta: { disclaimer: string } })._meta.disclaimer).toContain('SVLFG');
     }
   });
 });

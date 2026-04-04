@@ -8,15 +8,15 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO safety_guidance (topic, machine_type, species, hazards, control_measures, legal_requirements, ppe_required, regulation_ref, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'Tractor rollover protection',
+      'Traktor Ueberrollschutz ROPS',
       'tractor',
       null,
-      'Overturning on slopes, soft ground, or uneven terrain. Leading cause of fatal injury on UK farms.',
-      'Fit ROPS to all tractors. Wear seatbelt at all times. Avoid steep slopes.',
-      'PUWER 1998 reg. 25-26 requires ROPS on all tractors.',
-      'Seatbelt (mandatory with ROPS fitted)',
-      'PUWER 1998 reg. 25-26; HSE AIS25',
-      'GB',
+      'Ueberrollen auf Haengen, weichem oder unebenem Gelaende. Haeufigste toedliche Unfallursache in der deutschen Landwirtschaft.',
+      'ROPS an allen Traktoren Pflicht. Sicherheitsgurt anlegen. Hanglagen ueber 30% vermeiden.',
+      'BetrSichV: sichere Bereitstellung von Arbeitsmitteln. Maschinenrichtlinie 2006/42/EG.',
+      'Sicherheitsgurt (Pflicht bei montiertem ROPS), Sicherheitsschuhe S3',
+      'BetrSichV; Maschinenrichtlinie 2006/42/EG; VSG 3.1 SVLFG',
+      'DE',
     ]
   );
 
@@ -24,15 +24,15 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO safety_guidance (topic, machine_type, species, hazards, control_measures, legal_requirements, ppe_required, regulation_ref, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'ATV/quad bike safety',
-      'atv',
+      'Teleskoplader Standsicherheit',
+      'teleskoplader',
       null,
-      'Overturning on slopes. Riders thrown off. No ROPS on most ATVs.',
-      'Wear helmet at all times. Complete training course. Never carry passengers.',
-      'PUWER 1998 requires employer to ensure adequate training.',
-      'Helmet, boots, gloves',
-      'PUWER 1998; HSE AIS33',
-      'GB',
+      'Umkippen bei Ueberladung oder auf unebenem Gelaende. Quetschgefahr fuer umstehende Personen.',
+      'Befaehigungsnachweis DGUV 308-009 Pflicht. Jaehrliche Pruefung. Tragfaehigkeit beachten.',
+      'BetrSichV §14: wiederkehrende Pruefung. DGUV Vorschrift 68.',
+      'Sicherheitsgurt, Sicherheitsschuhe S3, Schutzhelm',
+      'BetrSichV §14; DGUV Vorschrift 68; DGUV Grundsatz 308-009',
+      'DE',
     ]
   );
 
@@ -41,15 +41,15 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO safety_guidance (topic, machine_type, species, hazards, control_measures, legal_requirements, ppe_required, regulation_ref, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'Cattle handling in crush and race',
+      'Rinderhaltung Fixierung und sicherer Umgang',
       null,
-      'cattle',
-      'Crushing against gates and walls. Kicking. Head butting. Trampling.',
-      'Use properly maintained crush and race system. Approach cattle calmly.',
-      'MHSW Regulations 1999 require risk assessment for cattle handling.',
-      'Steel-toe boots, hard hat when working in crush',
-      'MHSW Regulations 1999; HSE AIS35',
-      'GB',
+      'rinder',
+      'Quetschen an Waenden oder Gattern. Tritte und Kopfstoesse. Treten und Niedertrampeln.',
+      'Fangstand und Treibgang verwenden. Tiere ruhig ansprechen und treiben.',
+      'ArbSchG §5: Gefaehrdungsbeurteilung. VSG 2.1 SVLFG: Tierhaltung.',
+      'Sicherheitsstiefel mit Stahlkappe',
+      'ArbSchG §5; VSG 2.1 SVLFG; DGUV Information 214-016',
+      'DE',
     ]
   );
 
@@ -57,32 +57,32 @@ export function createSeededDatabase(dbPath: string): Database {
   db.run(
     `INSERT INTO children_rules (age_group, activity, permitted, conditions, regulation_ref, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?)`,
-    ['under-13', 'Riding or driving tractors', 0, 'Absolutely prohibited.', 'CHAW 1998 reg. 3', 'GB']
+    ['unter-13', 'Fahren oder Mitfahren auf einem Traktor', 0, 'Strikt verboten.', 'JArbSchG §5; VSG 3.1 SVLFG', 'DE']
   );
   db.run(
     `INSERT INTO children_rules (age_group, activity, permitted, conditions, regulation_ref, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?)`,
-    ['13-15', 'Operating machinery (non-tractor)', 1, 'Permitted only with adequate training and direct supervision.', 'CHAW 1998 reg. 4', 'GB']
+    ['13-14', 'Bedienung von Maschinen oder Fahrzeugen', 0, 'Verboten. Keine Bedienung von landwirtschaftlichen Maschinen.', 'JArbSchG §5; VSG 3.1 SVLFG', 'DE']
   );
   db.run(
     `INSERT INTO children_rules (age_group, activity, permitted, conditions, regulation_ref, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?)`,
-    ['16-17', 'Driving tractors', 1, 'Permitted on-farm with ROPS-fitted tractor after training.', 'CHAW 1998', 'GB']
+    ['15-17', 'Traktorfahren auf dem Betriebsgelaende', 1, 'Auf dem Betriebsgelaende erlaubt mit ROPS-Traktor und Sicherheitsgurt nach Unterweisung.', 'JArbSchG; FeV §10', 'DE']
   );
 
-  // COSHH
+  // COSHH / Gefahrstoffe
   db.run(
     `INSERT INTO coshh_guidance (substance_type, activity, assessment_required, ppe, storage_requirements, disposal_requirements, regulation_ref, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'Pesticides',
-      'Spraying and application',
+      'Pflanzenschutzmittel',
+      'Ansetzen, Spritzen und Reinigung',
       1,
-      'Chemical-resistant gloves, coveralls, face shield',
-      'Locked store with bunded floor.',
-      'Triple-rinse containers and recycle via approved scheme.',
-      'COSHH 2002; HSE AIS16',
-      'GB',
+      'Chemikalienschutzhandschuhe (EN 374), Schutzanzug, Atemschutz A2P3',
+      'Abschliessbarer, beluefteter Lagerraum mit Auffangwanne.',
+      'Leere Verpackungen dreimal spuelen und ueber PAMIRA entsorgen.',
+      'GefStoffV §6, §14; PflSchG §9',
+      'DE',
     ]
   );
 
@@ -91,14 +91,14 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO reporting_requirements (incident_type, reportable, deadline, notify, method, record_retention_years, regulation_ref, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'Fatal injuries',
+      'Toedlicher Arbeitsunfall',
       1,
-      'Immediately by phone',
-      'HSE Incident Contact Centre',
-      'Telephone then online form (F2508)',
-      3,
-      'RIDDOR 2013 reg. 6',
-      'GB',
+      'Sofortige Meldung',
+      'SVLFG',
+      'Sofortige telefonische Meldung an die SVLFG. Unfallanzeige innerhalb von 3 Tagen.',
+      30,
+      'SGB VII §193; DGUV Vorschrift 1 §6',
+      'DE',
     ]
   );
 
@@ -107,27 +107,27 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO risk_assessment_templates (activity, hazards, controls, residual_risk, review_frequency, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?)`,
     [
-      'Tractor operation',
-      'Overturning; PTO entanglement; falling from cab',
-      'ROPS fitted; seatbelt worn; PTO guards in place',
-      'Low with controls in place.',
-      'Annual',
-      'GB',
+      'Traktor fahren',
+      'Ueberrollen auf Haengen; Erfassen durch Zapfwelle; Absturz vom Traktor',
+      'ROPS montiert; Sicherheitsgurt angelegt; Zapfwellenschutz angebracht',
+      'Gering bei Einhaltung aller Massnahmen.',
+      'Jaehrlich',
+      'DE',
     ]
   );
 
   // FTS5 search index
   db.run(
     `INSERT INTO search_index (title, body, topic, jurisdiction) VALUES (?, ?, ?, ?)`,
-    ['Tractor rollover protection', 'Overturning on slopes and soft ground. Fit ROPS to all tractors. Wear seatbelt. PUWER 1998.', 'machinery', 'GB']
+    ['Traktor Ueberrollschutz ROPS Sicherheitsgurt', 'ROPS Pflicht auf allen Traktoren. Sicherheitsgurt. Ueberrollen auf Haengen. BetrSichV. VSG 3.1 SVLFG.', 'machinery', 'DE']
   );
   db.run(
     `INSERT INTO search_index (title, body, topic, jurisdiction) VALUES (?, ?, ?, ?)`,
-    ['Cattle handling safety', 'Crushing against gates. Kicking. Use crush and race system. MHSW Regulations.', 'livestock', 'GB']
+    ['Rinder Fixierung Fangstand Treibgang', 'Fangstand und Treibgang fuer Rinder. Quetschen Tritte. ArbSchG §5. VSG 2.1 SVLFG.', 'livestock', 'DE']
   );
   db.run(
     `INSERT INTO search_index (title, body, topic, jurisdiction) VALUES (?, ?, ?, ?)`,
-    ['COSHH Pesticides', 'Chemical-resistant gloves. Locked store. COSHH 2002 assessment required.', 'coshh', 'GB']
+    ['Pflanzenschutzmittel Gefahrstoffe GefStoffV Betriebsanweisung', 'Sachkundenachweis Pflicht. Schutzhandschuhe EN 374. Lagerraum Auffangwanne. GefStoffV §14. PflSchG.', 'chemical', 'DE']
   );
 
   // Metadata
