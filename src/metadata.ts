@@ -8,16 +8,17 @@ export interface Meta {
 }
 
 const DISCLAIMER =
-  'This server provides general guidance based on HSE publications. It does not constitute ' +
-  'legal advice. Always consult current HSE guidance and your own risk assessments. ' +
-  'In an emergency, call 999.';
+  'Dieser Server stellt allgemeine Orientierungshilfen auf Grundlage von Veroeffentlichungen der SVLFG, ' +
+  'DGUV, BAuA und geltender Arbeitsschutzgesetze bereit. Er stellt keine Rechtsberatung dar. ' +
+  'Konsultieren Sie stets die aktuellen Vorschriften, Ihre eigene Gefaehrdungsbeurteilung und ' +
+  'qualifizierte Fachkraefte fuer Arbeitssicherheit. Im Notfall: 112.';
 
 export function buildMeta(overrides?: Partial<Meta>): Meta {
   return {
     disclaimer: DISCLAIMER,
     data_age: overrides?.data_age ?? 'unknown',
-    source_url: overrides?.source_url ?? 'https://www.hse.gov.uk/agriculture/',
-    copyright: 'Data sourced from HSE publications under Open Government Licence v3.0. Server: Apache-2.0 Ansvar Systems.',
+    source_url: overrides?.source_url ?? 'https://www.svlfg.de/praevention',
+    copyright: 'Daten auf Grundlage von SVLFG-, DGUV-, BAuA- und Gesetzestexten. Server: Apache-2.0 Ansvar Systems.',
     server: 'de-farm-safety-mcp',
     version: '0.1.0',
     ...overrides,

@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -43,5 +44,11 @@ export function handleGetChildrenOnFarmsRules(db: Database, args: ChildrenArgs) 
       regulation_ref: r.regulation_ref,
     })),
     _meta: buildMeta(),
+    _citation: buildCitation(
+      'DE Children on Farms Rules',
+      `German children on farms rules${args.age_group ? ` (${args.age_group})` : ''}`,
+      'get_children_on_farms_rules',
+      { ...(args.age_group ? { age_group: args.age_group } : {}) },
+    ),
   };
 }

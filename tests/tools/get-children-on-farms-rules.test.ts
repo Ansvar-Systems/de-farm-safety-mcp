@@ -25,15 +25,15 @@ describe('get_children_on_farms_rules tool', () => {
   });
 
   test('filters by age group', () => {
-    const result = handleGetChildrenOnFarmsRules(db, { age_group: 'under-13' });
+    const result = handleGetChildrenOnFarmsRules(db, { age_group: 'unter-13' });
     expect((result as { results_count: number }).results_count).toBe(1);
     const first = (result as { results: { age_group: string; permitted: boolean }[] }).results[0];
-    expect(first.age_group).toBe('under-13');
+    expect(first.age_group).toBe('unter-13');
     expect(first.permitted).toBe(false);
   });
 
   test('filters by activity', () => {
-    const result = handleGetChildrenOnFarmsRules(db, { activity: 'tractor' });
+    const result = handleGetChildrenOnFarmsRules(db, { activity: 'Traktor' });
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
 

@@ -1,0 +1,44 @@
+{
+  "mcp_name": "Germany Farm Safety MCP",
+  "jurisdiction": "DE",
+  "build_date": "2026-04-04",
+  "status": "populated",
+  "sources": [
+    "SVLFG (Sozialversicherung fuer Landwirtschaft, Forsten und Gartenbau)",
+    "ArbSchG (Arbeitsschutzgesetz)",
+    "DGUV (Deutsche Gesetzliche Unfallversicherung)",
+    "BetrSichV (Betriebssicherheitsverordnung)",
+    "GefStoffV (Gefahrstoffverordnung)",
+    "BAuA (Bundesanstalt fuer Arbeitsschutz und Arbeitsmedizin)",
+    "VSG 1.1-4.1 (Unfallverhuetungsvorschriften SVLFG)",
+    "PflSchG (Pflanzenschutzgesetz)",
+    "JArbSchG (Jugendarbeitsschutzgesetz)",
+    "MuSchG (Mutterschutzgesetz)",
+    "BioStoffV (Biostoffverordnung)",
+    "TA Luft 2021"
+  ],
+  "record_counts": {
+    "safety_guidance": 38,
+    "children_rules": 11,
+    "reporting_requirements": 7,
+    "coshh_guidance": 8,
+    "risk_assessment_templates": 12,
+    "fts_search_entries": 45,
+    "total": 76
+  },
+  "categories": [
+    "Maschinensicherheit (Traktoren, Maehdrescher, Teleskoplader, Pflanzenschutzspritzen, Motorsaegen, Ballenpressen, Foerderschnecken, CE-Konformitaet)",
+    "Tierhaltung und Tierumgang (Rinder, Schweine, Pferde, Gefluegel, Schafe)",
+    "Gefahrstoffe (Pflanzenschutzmittel, SDB/Betriebsanweisung, Guellegase/H2S, Silogase, Kraftstoff, Ammoniak, Staeube/ATEX, Holzschutzmittel/CMR)",
+    "Absturzgefahr (Daecher, Silos, Obstbau, Heustockarbeiten)",
+    "Alleinarbeit (PNA, DGUV 112-139)",
+    "Gefaehrdungsbeurteilung (ArbSchG §5, STOP-Prinzip, Dokumentation)",
+    "SVLFG Unfallstatistik und Praevention",
+    "PSA-Pflichten (PSA-BV, CE-Kennzeichnung)",
+    "Hitzearbeit und UV-Schutz (BK 5103)",
+    "Mutterschutz, MSE, psychische Belastungen, Zoonosen, elektrische Sicherheit",
+    "Jugendarbeitsschutz (JArbSchG, Kinder auf dem Betrieb, Ausbildung)",
+    "Meldepflicht Arbeitsunfaelle (SVLFG, SGB VII, Berufskrankheiten, Gewerbeaufsicht)",
+    "Vorlagen Gefaehrdungsbeurteilung (Traktor, Rinder, Hoehe, Guelle, PSM, Silo, Alleinarbeit, MSE, Psyche, Zoonosen, Motorsaege)"
+  ]
+}
