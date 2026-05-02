@@ -61,11 +61,13 @@ Ingestion fetches from the upstream source(s) listed under **Sources** below and
 
 | Source | Source URL | Terms / license URL | License basis | Attribution required | Commercial use | Redistribution / caching | Notes |
 |---|---|---|---|---|---|---|---|
-| [HSE Agriculture Guidance](https://www.hse.gov.uk/agriculture/) | https://www.hse.gov.uk/agriculture/ | _(not recorded)_ | Open Government Licence v3 | Unverified | Unverified | Unverified | Machinery safety, livestock handling, working at height, confined spaces, lone working |
-| [RIDDOR Regulations](https://www.hse.gov.uk/riddor/) | https://www.hse.gov.uk/riddor/ | _(not recorded)_ | Open Government Licence v3 | Unverified | Unverified | Unverified | Incident reporting requirements, deadlines, notification methods, record retention |
-| [COSHH in Agriculture](https://www.hse.gov.uk/agriculture/topics/coshh.htm) | https://www.hse.gov.uk/agriculture/topics/coshh.htm | _(not recorded)_ | Open Government Licence v3 | Unverified | Unverified | Unverified | Pesticides, sheep dip, veterinary medicines, fuel, ammonia, grain dust, wood preservatives |
-| [PUWER (Provision and Use of Work Equipment Regulations)](https://www.hse.gov.uk/work-equipment-machinery/puwer.htm) | https://www.hse.gov.uk/work-equipment-machinery/puwer.htm | _(not recorded)_ | Open Government Licence v3 | Unverified | Unverified | Unverified | Work equipment safety requirements, maintenance, guarding, training |
-| [Farm Safety Foundation (Yellow Wellies)](https://www.yellowwellies.org/) | https://www.yellowwellies.org/ | _(not recorded)_ | Public information | Unverified | Unverified | Unverified | Farm safety awareness, young farmer guidance, mental health resources |
+| [HSE Agriculture Guidance](https://www.hse.gov.uk/agriculture/) | https://www.hse.gov.uk/agriculture/ | [Terms](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Open Government Licence v3 | Yes | Yes | Yes | Machinery safety, livestock handling, working at height, confined spaces, lone working |
+| [RIDDOR Regulations](https://www.hse.gov.uk/riddor/) | https://www.hse.gov.uk/riddor/ | [Terms](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Open Government Licence v3 | Yes | Yes | Yes | Incident reporting requirements, deadlines, notification methods, record retention |
+| [COSHH in Agriculture](https://www.hse.gov.uk/agriculture/topics/coshh.htm) | https://www.hse.gov.uk/agriculture/topics/coshh.htm | [Terms](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Open Government Licence v3 | Yes | Yes | Yes | Pesticides, sheep dip, veterinary medicines, fuel, ammonia, grain dust, wood preservatives |
+| [PUWER (Provision and Use of Work Equipment Regulations)](https://www.hse.gov.uk/work-equipment-machinery/puwer.htm) | https://www.hse.gov.uk/work-equipment-machinery/puwer.htm | [Terms](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | Open Government Licence v3 | Yes | Yes | Yes | Work equipment safety requirements, maintenance, guarding, training |
+| [Farm Safety Foundation (Yellow Wellies)](https://www.yellowwellies.org/) | https://www.yellowwellies.org/ | [Terms](https://www.yellowwellies.org/) | Public information | Yes | No | No | Farm safety awareness, young farmer guidance, mental health resources |
+
+> One or more sources above are marked as restricting commercial use or redistribution. Confirm your specific use case with the source operator before running ingestion in a commercial deployment.
 
 ## What this repository does not provide
 
