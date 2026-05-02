@@ -2,7 +2,7 @@
   "name": "@ansvar/de-farm-safety-mcp",
   "mcpName": "io.github.ansvar-systems/de-farm-safety",
   "version": "0.1.0",
-  "description": "German farm occupational safety via MCP — SVLFG/DGUV guidance, machinery safety, livestock handling, GefStoffV, ArbSchG",
+  "description": "German farm occupational safety via MCP \u2014 SVLFG/DGUV guidance, machinery safety, livestock handling, GefStoffV, ArbSchG",
   "type": "module",
   "main": "dist/server.js",
   "bin": {
@@ -21,7 +21,17 @@
     "build:db": "tsx scripts/build-db.ts",
     "freshness:check": "tsx scripts/check-freshness.ts"
   },
-  "keywords": ["mcp", "safety", "svlfg", "dguv", "arbschg", "gefstoffv", "machinery", "farming", "germany"],
+  "keywords": [
+    "mcp",
+    "safety",
+    "svlfg",
+    "dguv",
+    "arbschg",
+    "gefstoffv",
+    "machinery",
+    "farming",
+    "germany"
+  ],
   "author": "Ansvar Systems <info@ansvar.eu>",
   "license": "Apache-2.0",
   "repository": {
@@ -46,5 +56,9 @@
     "tsx": "^4.0.0",
     "typescript": "^5.5.0",
     "vitest": "^2.0.0"
-  }
+  },
+  "files": [
+    "dist",
+    "server.json"
+  ]
 }
