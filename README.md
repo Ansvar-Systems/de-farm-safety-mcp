@@ -1,116 +1,90 @@
-# Germany Farm Safety MCP
+# DE Farm Safety MCP
 
-[![CI](https://github.com/Ansvar-Systems/de-farm-safety-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Ansvar-Systems/de-farm-safety-mcp/actions/workflows/ci.yml)
-[![GHCR](https://github.com/Ansvar-Systems/de-farm-safety-mcp/actions/workflows/ghcr-build.yml/badge.svg)](https://github.com/Ansvar-Systems/de-farm-safety-mcp/actions/workflows/ghcr-build.yml)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+German farm occupational safety via MCP — SVLFG/DGUV guidance, machinery safety, livestock handling, GefStoffV, ArbSchG
 
-UK farm health and safety guidance via the [Model Context Protocol](https://modelcontextprotocol.io). Query HSE machinery safety, livestock handling rules, COSHH substance requirements, children on farms regulations, RIDDOR reporting, and risk assessment templates -- all from your AI assistant.
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![MCP](https://img.shields.io/badge/MCP-spec--compliant-green.svg)](https://modelcontextprotocol.io)
 
-Part of [Ansvar Open Agriculture](https://ansvar.eu/open-agriculture).
+## What this is
 
-## Why This Exists
+German farm occupational safety via MCP — SVLFG/DGUV guidance, machinery safety, livestock handling, GefStoffV, ArbSchG
 
-Farming is the most dangerous industry in the UK. HSE publishes safety guidance across dozens of web pages, PDFs, and information sheets. This MCP server puts it all in a queryable database so AI assistants can give accurate, sourced answers about farm safety obligations.
+Part of the Ansvar MCP fleet — source-available servers published for self-hosting.
 
-## Quick Start
+## Two ways to use it
 
-### Claude Desktop
+**Self-host (free, Apache 2.0)** — clone this repo, run the ingestion script to build your local database from the listed upstream sources, point your MCP client at the local server. Instructions below.
 
-Add to `claude_desktop_config.json`:
+**Trial the hosted gateway (paid pilot, B2B)** — for production use against
+the curated, kept-fresh corpus across the full Ansvar MCP fleet at once, with
+citation enrichment, multi-jurisdiction fan-out, and audit-ledgered query
+logs, see [ansvar.eu](https://ansvar.eu).
+
+## Self-hosting
+
+### Install
+
+```bash
+git clone https://github.com/Ansvar-Systems/de-farm-safety-mcp.git
+cd de-farm-safety-mcp
+npm install
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Build the database
+
+```bash
+npm run ingest
+```
+
+Ingestion fetches from the upstream source(s) listed under **Sources** below and builds a local SQLite database. Re-run periodically to refresh. Review the source's published terms before running ingestion in a commercial deployment, and inspect the ingestion script in this repo for the actual access method (open API, bulk download, HTML scrape, or feed).
+
+### Configure your MCP client
 
 ```json
 {
   "mcpServers": {
-    "uk-farm-safety": {
-      "command": "npx",
-      "args": ["-y", "@ansvar/de-farm-safety-mcp"]
+    "de-farm-safety-mcp": {
+      "command": "node",
+      "args": ["dist/server.js"]
     }
   }
 }
 ```
 
-### Claude Code
+## Sources
 
-```bash
-claude mcp add uk-farm-safety npx @ansvar/de-farm-safety-mcp
-```
+| Source | Source URL | Terms / license URL | License basis | Attribution required | Commercial use | Redistribution / caching | Notes |
+|---|---|---|---|---|---|---|---|
+| [HSE Agriculture Guidance](https://www.hse.gov.uk/agriculture/) | https://www.hse.gov.uk/agriculture/ | _(not recorded)_ | Open Government Licence v3 | Unverified | Unverified | Unverified | Machinery safety, livestock handling, working at height, confined spaces, lone working |
+| [RIDDOR Regulations](https://www.hse.gov.uk/riddor/) | https://www.hse.gov.uk/riddor/ | _(not recorded)_ | Open Government Licence v3 | Unverified | Unverified | Unverified | Incident reporting requirements, deadlines, notification methods, record retention |
+| [COSHH in Agriculture](https://www.hse.gov.uk/agriculture/topics/coshh.htm) | https://www.hse.gov.uk/agriculture/topics/coshh.htm | _(not recorded)_ | Open Government Licence v3 | Unverified | Unverified | Unverified | Pesticides, sheep dip, veterinary medicines, fuel, ammonia, grain dust, wood preservatives |
+| [PUWER (Provision and Use of Work Equipment Regulations)](https://www.hse.gov.uk/work-equipment-machinery/puwer.htm) | https://www.hse.gov.uk/work-equipment-machinery/puwer.htm | _(not recorded)_ | Open Government Licence v3 | Unverified | Unverified | Unverified | Work equipment safety requirements, maintenance, guarding, training |
+| [Farm Safety Foundation (Yellow Wellies)](https://www.yellowwellies.org/) | https://www.yellowwellies.org/ | _(not recorded)_ | Public information | Unverified | Unverified | Unverified | Farm safety awareness, young farmer guidance, mental health resources |
 
-### Streamable HTTP (remote)
+## What this repository does not provide
 
-```
-https://mcp.ansvar.eu/de-farm-safety/mcp
-```
+This repository's source — the MCP server code, schema, and ingestion script — is licensed under Apache
+2.0. The license below covers the code in this repository only; it does not
+extend to upstream materials. Pre-built database snapshots under `data/` (e.g. `data/database.db`) are shipped as a transitional convenience while the build pipeline is migrated to mount the corpus from a separate volume; they are scheduled for removal in a Phase 2 release. Their presence does not change the legal positioning above — running ingestion is still the canonical way to build a fresh corpus from upstream sources.
 
-### Docker (self-hosted)
-
-```bash
-docker run -p 3000:3000 ghcr.io/ansvar-systems/de-farm-safety-mcp:latest
-```
-
-### npm (stdio)
-
-```bash
-npx @ansvar/de-farm-safety-mcp
-```
-
-## Example Queries
-
-Ask your AI assistant:
-
-- "What safety measures are needed for tractor PTO work?"
-- "Can a 14-year-old drive a tractor on a farm?"
-- "What PPE is needed for sheep dipping?"
-- "What incidents must I report under RIDDOR on a farm?"
-- "Give me a risk assessment template for cattle handling"
-- "What are the COSHH requirements for pesticide storage?"
-
-## Stats
-
-| Metric | Value |
-|--------|-------|
-| Tools | 10 (3 meta + 7 domain) |
-| Jurisdiction | GB |
-| Data sources | HSE Agriculture, RIDDOR, COSHH, PUWER, Farm Safety Foundation |
-| License (data) | Open Government Licence v3 |
-| License (code) | Apache-2.0 |
-| Transport | stdio + Streamable HTTP |
-
-## Tools
-
-| Tool | Description |
-|------|-------------|
-| `about` | Server metadata and links |
-| `list_sources` | Data sources with freshness info |
-| `check_data_freshness` | Staleness status and refresh command |
-| `search_safety_guidance` | FTS5 search across all safety guidance |
-| `get_machinery_safety` | Machinery hazards, controls, PPE, legal requirements |
-| `get_livestock_handling_safety` | Livestock handling guidance by species |
-| `get_coshh_requirements` | COSHH substance control requirements |
-| `get_children_on_farms_rules` | Age-group rules for children on farms |
-| `get_reporting_requirements` | RIDDOR incident reporting requirements |
-| `get_risk_assessment_template` | Risk assessment templates by activity |
-
-See [TOOLS.md](TOOLS.md) for full parameter documentation.
-
-## Security Scanning
-
-This repository runs security checks on every push:
-
-- **CodeQL** -- static analysis for JavaScript/TypeScript
-- **Gitleaks** -- secret detection across full history
-- **Dependency review** -- via Dependabot
-- **Container scanning** -- via GHCR build pipeline
-
-See [SECURITY.md](SECURITY.md) for reporting policy.
-
-## Disclaimer
-
-This tool provides reference data for informational purposes only. It is not professional health and safety advice. Always consult current HSE guidance and your own risk assessments. In an emergency, call 999. See [DISCLAIMER.md](DISCLAIMER.md).
-
-## Contributing
-
-Issues and pull requests welcome. For security vulnerabilities, email security@ansvar.eu (do not open a public issue).
+Running ingestion may download, cache, transform, and index materials from the listed upstream sources. You are responsible for confirming that your use of those materials complies with the source terms, attribution requirements, robots/rate limits, database rights, copyright rules, and any commercial-use or redistribution limits that apply in your jurisdiction.
 
 ## License
 
-Apache-2.0. Data sourced under Open Government Licence v3.
+Apache 2.0 — see [LICENSE](LICENSE). Commercial use, modification, and
+redistribution of **the source code in this repository** are permitted under
+that license. The license does not extend to upstream materials downloaded by the ingestion script; those remain governed by their respective source terms listed above.
+
+## The Ansvar gateway
+
+If you'd rather not self-host, [ansvar.eu](https://ansvar.eu) provides this
+MCP plus the full Ansvar fleet through a single OAuth-authenticated endpoint,
+with the curated production corpus, multi-MCP query orchestration, citation
+enrichment, and (on the company tier) a per-tenant cryptographic audit
+ledger. Pilot mode, B2B only.
